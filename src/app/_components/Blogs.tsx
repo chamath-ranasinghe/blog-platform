@@ -1,6 +1,5 @@
 import React from "react";
 import BlogItem from "./BlogItem";
-const axios = require("axios");
 
 interface Blog {
   id: number;
@@ -10,9 +9,10 @@ interface Blog {
 }
 
 export default async function Blogs() {
-  const url: string = "http://localhost:8080/blogs";
-  const res = await axios(url);
-  const blogs: Blog[] = res.data;
+  // const url: string = "http://localhost:8080/blogs";
+  const url: string = "http://localhost:3000/api/blogs";
+  const res = await fetch(url);
+  const blogs: Blog[] = await res.json();
 
   return (
     <div className="flex flex-row">
